@@ -9,8 +9,9 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws IOException {
         int k = readFromFile("INPUT.TXT"); //Кол-во дней
-        String[] arr = trackRearranging(k);
-        writeToFile(arr);
+        //String[] arr = trackRearranging(k);
+        String[] arr = RearrangingAnalise(k);
+    writeToFile(arr);
     }
     public static int readFromFile(String fileName) throws FileNotFoundException {
         Scanner sc = new Scanner(new File(fileName));
@@ -45,5 +46,18 @@ public class Main {
 
         }
         return str;
+    }
+    public static String[] RearrangingAnalise(int k) throws FileNotFoundException {
+        String[] arr = {"G", "C", "V"}; //Герань, крокус, фиалка
+        // System.out.println(Arrays.toString(arr));
+        int x = k%3;
+        String[] pos1 = {"V","G", "C"};
+        String[] pos2 = {"C","V", "G"};
+        if (x == 1)
+            arr = pos1;
+        else
+            arr = pos2;
+        // System.out.println(Arrays.toString(arr));
+        return arr;
     }
 }
